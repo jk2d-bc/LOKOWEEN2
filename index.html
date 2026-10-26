@@ -1,270 +1,364 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>LOKOWEEN 2da Edición</title>
+  <title>🎃 LOKOWEEN 2da Edición | La Peda de Disfraces</title>
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="LOKOWEEN 2da Edición 🎃🔥">
-  <meta property="og:description" content="Peda de disfraces Vol. II. Jueves 31 de Octubre. TTP.">
+  <!-- Open Graph Meta Tags (Vista previa para WhatsApp, Instagram, Messenger) -->
+  <meta property="og:title" content="🎃 LOKOWEEN (2da Edición) — ¡La Peda de Disfraces del Año!">
+  <meta property="og:description" content="🗓️ 31 Octubre | ⏰ 8:00 PM | 🎭 Putidisfraz Obligatorio | 🍾 TTP (Trae Tu Pomo). ¡Haz clic para ver la ubicación y detalles!">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1508361001413-7a9dca21d08a?auto=format&fit=crop&w=1200&q=80">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="theme-color" content="#09040e">
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Google Fonts -->
+  <!-- Fuentes & Iconos -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Orbitron:wght@600;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    body {
-      background-color: #050508;
-      font-family: 'Rajdhani', sans-serif;
-      color: #ffffff;
-      overflow-x: hidden;
-    }
-    
-    .font-creepster { font-family: 'Creepster', cursive; }
-    .font-orbitron { font-family: 'Orbitron', sans-serif; }
-
-    /* Wide Color Gamut (Display P3) Glow & Colors */
-    .neon-orange-text {
-      color: #ff5500;
-      text-shadow: 0 0 10px rgba(255, 85, 0, 0.8), 0 0 20px rgba(255, 85, 0, 0.5);
-    }
-    .neon-green-text {
-      color: #00ff66;
-      text-shadow: 0 0 10px rgba(0, 255, 102, 0.8), 0 0 20px rgba(0, 255, 102, 0.5);
-    }
-    .neon-spotify-text {
-      color: #1DB954;
-      text-shadow: 0 0 10px rgba(29, 185, 84, 0.8), 0 0 20px rgba(29, 185, 84, 0.5);
+    /* ==========================================================================
+       VARIABLES Y COLORES NEÓN (HDR / Display-P3 & Fallback sRGB)
+       ========================================================================== */
+    :root {
+      --neon-orange: #ff5500;
+      --neon-orange-glow: #ff3300;
+      --neon-green: #00ff66;
+      --neon-green-glow: #00cc55;
+      --neon-purple: #b042ff;
     }
 
+    /* Resplandor sRGB Estándar */
+    .hdr-glow-orange {
+      color: var(--neon-orange);
+      text-shadow: 
+        0 0 10px rgba(255, 85, 0, 0.8),
+        0 0 25px rgba(255, 85, 0, 0.5),
+        0 0 45px rgba(255, 51, 0, 0.3);
+    }
+
+    .hdr-glow-green {
+      color: var(--neon-green);
+      text-shadow: 
+        0 0 10px rgba(0, 255, 102, 0.9),
+        0 0 25px rgba(0, 255, 102, 0.6),
+        0 0 45px rgba(0, 204, 85, 0.3);
+    }
+
+    .hdr-box-orange {
+      border-color: rgba(255, 85, 0, 0.4);
+      box-shadow: 0 0 20px rgba(255, 85, 0, 0.25), inset 0 0 15px rgba(255, 85, 0, 0.1);
+    }
+
+    .hdr-box-green {
+      border-color: rgba(0, 255, 102, 0.4);
+      box-shadow: 0 0 20px rgba(0, 255, 102, 0.25), inset 0 0 15px rgba(0, 255, 102, 0.1);
+    }
+
+    /* Gama de Color Ampliada (Display-P3) para Celulares OLED/HDR */
     @media (color-gamut: p3) {
-      .neon-orange-text {
-        color: color(display-p3 1 0.3 0);
-        text-shadow: 0 0 12px color(display-p3 1 0.3 0 / 0.9), 0 0 25px color(display-p3 1 0.3 0 / 0.6);
-      }
-      .neon-green-text {
-        color: color(display-p3 0 1 0.3);
-        text-shadow: 0 0 12px color(display-p3 0 1 0.3 / 0.9), 0 0 25px color(display-p3 0 1 0.3 / 0.6);
-      }
-      .neon-spotify-text {
-        color: color(display-p3 0.11 0.72 0.33);
-        text-shadow: 0 0 12px color(display-p3 0.11 0.72 0.33 / 0.9);
+      :root {
+        --neon-orange: color(display-p3 1 0.35 0);
+        --neon-green: color(display-p3 0 1 0.3);
       }
     }
 
+    @media (dynamic-range: high) and (color-gamut: p3) {
+      .hdr-glow-orange {
+        text-shadow: 
+          0 0 4px color(display-p3 1 0.6 0.2),
+          0 0 15px color(display-p3 1 0.35 0),
+          0 0 35px color(display-p3 1 0.2 0),
+          0 0 65px color(display-p3 1 0.05 0);
+      }
+
+      .hdr-glow-green {
+        text-shadow: 
+          0 0 4px color(display-p3 0.5 1 0.6),
+          0 0 15px color(display-p3 0 1 0.3),
+          0 0 35px color(display-p3 0 0.9 0.2),
+          0 0 65px color(display-p3 0 0.7 0.1);
+      }
+    }
+
+    /* ==========================================================================
+       TARJETAS MÁS TRASLÚCIDAS (Glassmorphism Acrílico)
+       ========================================================================== */
     .glass-card {
-      background: rgba(15, 15, 22, 0.75);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 102, 0, 0.2);
+      background: rgba(12, 6, 20, 0.40);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 102, 0, 0.25);
+      border-radius: 1.25rem;
     }
 
+    /* Animación de flotación */
+    @keyframes floatAnimation {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+    .animate-float {
+      animation: floatAnimation 3.5s ease-in-out infinite;
+    }
+
+    /* Video de Fondo Cristalino */
     #bg-video {
       position: fixed;
-      right: 0;
-      bottom: 0;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      z-index: -2;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
       object-fit: cover;
-      filter: brightness(0.4) contrast(1.1);
+      z-index: -2;
+      filter: brightness(0.55) contrast(1.15);
     }
+
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background-color: #050308;
+      color: #ffffff;
+    }
+
+    .font-spooky { font-family: 'Creepster', cursive; }
+    .font-tech { font-family: 'Orbitron', sans-serif; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #050308; }
+    ::-webkit-scrollbar-thumb { background: #ff5500; border-radius: 3px; }
   </style>
 </head>
-<body class="min-h-[100dvh] flex flex-col justify-between items-center relative selection:bg-orange-600 selection:text-white">
+<body class="min-h-[100dvh] relative overflow-x-hidden selection:bg-orange-600 selection:text-white">
 
-  <!-- Video de fondo -->
+  <!-- VIDEO DE FONDO LIMPIO Y CRISTALINO -->
   <video autoplay muted loop playsinline id="bg-video">
     <source src="video.mp4" type="video/mp4">
+    <!-- Respaldo HD en caso de pruebas -->
+    <source src="https://assets.mixkit.co/videos/preview/mixkit-party-lights-and-people-dancing-40348-large.mp4" type="video/mp4">
   </video>
 
-  <!-- Overlay de contraste -->
-  <div class="fixed inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/90 -z-10 pointer-events-none"></div>
+  <!-- CAPA SUTIL DE CONTRASTE -->
+  <div class="fixed inset-0 bg-gradient-to-b from-black/70 via-black/35 to-black/85 -z-10 pointer-events-none"></div>
 
-  <!-- Botón Flotante Audio -->
-  <button id="audio-toggle" class="fixed top-4 right-4 z-[9999] w-12 h-12 rounded-full glass-card border-orange-500/50 flex items-center justify-center text-orange-400 hover:scale-105 transition-transform active:scale-95 shadow-lg shadow-orange-950/50">
-    <i class="fa-solid fa-volume-xmark text-lg" id="audio-icon"></i>
+  <!-- BOTÓN FLOTANTE DE AUDIO (ESQUINA SUPERIOR DERECHA) -->
+  <button id="audio-toggle" class="fixed top-4 right-4 z-[9999] w-11 h-11 rounded-full glass-card border-orange-500/50 flex items-center justify-center text-orange-400 hover:scale-105 active:scale-95 transition-transform shadow-lg shadow-orange-950/50">
+    <i class="fa-solid fa-volume-xmark text-base" id="audio-icon"></i>
   </button>
-  <audio id="bg-music" loop preload="auto">
-    <source src="audio.mp3" type="audio/mpeg">
-  </audio>
 
-  <!-- Contenido Principal -->
-  <main class="w-full max-w-md px-4 py-8 flex flex-col gap-6 z-10">
+  <!-- ==========================================================================
+     1. ENCABEZADO STICKY FLOTANTE (Queda fijo al deslizar)
+     ========================================================================== -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-black/50 border-b border-orange-500/20 py-3.5 px-4 text-center transition-all">
+    <div class="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-orange-950/60 border border-orange-500/40 text-orange-300 text-[10px] sm:text-xs font-tech tracking-widest uppercase mb-1">
+      <i class="fa-solid fa-fire text-orange-500"></i> 2da Edición Recargada <i class="fa-solid fa-fire text-orange-500"></i>
+    </div>
+    <h1 class="font-spooky text-5xl sm:text-7xl hdr-glow-orange leading-none tracking-wider my-0.5 animate-float select-none">
+      LOKOWEEN
+    </h1>
+    <h2 class="font-tech text-xs sm:text-lg hdr-glow-green font-bold tracking-widest uppercase">
+      Peda de Disfraces Vol. II
+    </h2>
+  </header>
 
-    <!-- Header / Título -->
-    <header class="text-center flex flex-col items-center mt-2">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-950/60 border border-orange-500/40 text-orange-300 text-xs font-orbitron tracking-widest uppercase mb-3">
-        <i class="fa-solid fa-fire text-orange-500"></i> 2da Edición Recargada <i class="fa-solid fa-fire text-orange-500"></i>
-      </div>
-      <h1 class="font-creepster text-6xl sm:text-7xl neon-orange-text tracking-wider my-1">
-        LOKOWEEN
-      </h1>
-      <h2 class="font-orbitron text-xl sm:text-2xl neon-green-text font-bold tracking-widest uppercase">
-        Peda de Disfraces Vol. II
-      </h2>
-      <p class="text-gray-300 text-sm mt-3 max-w-xs leading-relaxed">
-        Hace un año sobrevivimos al primer Lokoween... ¡Este 31 de octubre subimos el nivel! 🎃💀✨
-      </p>
-    </header>
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="w-full max-w-md mx-auto px-4 py-6 space-y-6 relative z-10">
 
-    <!-- Temporizador -->
-    <section class="glass-card rounded-2xl p-5 text-center shadow-xl">
-      <h3 class="font-orbitron text-xs font-bold tracking-widest text-orange-400 uppercase mb-4">
-        Tiempo restante para el desmadre
+    <p class="text-center text-gray-200 text-xs sm:text-sm max-w-xs mx-auto leading-relaxed drop-shadow">
+      Hace un año sobrevivimos al primer Lokoween... ¡Este 31 de octubre subimos el nivel! 🎃💀✨
+    </p>
+
+    <!-- ==========================================================================
+       4. CONTADOR REGRESIVO (Código 1 - Estilo HDR Neón)
+       ========================================================================== -->
+    <section class="glass-card hdr-box-orange p-5 text-center shadow-2xl">
+      <h3 class="font-tech text-[11px] sm:text-xs font-bold tracking-widest text-slate-300 uppercase mb-3 flex items-center justify-center gap-2">
+        <i class="fa-regular fa-clock text-orange-400"></i>
+        <span>Tiempo Restante Para El Desmadre</span>
       </h3>
-      <div class="grid grid-cols-4 gap-2 text-center">
-        <div class="bg-black/60 rounded-xl p-2 border border-orange-500/20">
-          <span id="days" class="font-orbitron text-2xl sm:text-3xl font-black text-orange-400 block">00</span>
-          <span class="text-[10px] uppercase tracking-wider text-gray-400 whitespace-nowrap">Días</span>
+      <div class="grid grid-cols-4 gap-2 font-tech">
+        <div class="bg-black/70 p-2.5 rounded-xl border border-white/10 text-center flex flex-col justify-center">
+          <span id="cdDays" class="text-xl sm:text-3xl font-black hdr-glow-orange leading-tight">00</span>
+          <span class="text-[9px] text-gray-400 uppercase tracking-wider mt-1">Días</span>
         </div>
-        <div class="bg-black/60 rounded-xl p-2 border border-orange-500/20">
-          <span id="hours" class="font-orbitron text-2xl sm:text-3xl font-black text-orange-400 block">00</span>
-          <span class="text-[10px] uppercase tracking-wider text-gray-400 whitespace-nowrap">Horas</span>
+        <div class="bg-black/70 p-2.5 rounded-xl border border-white/10 text-center flex flex-col justify-center">
+          <span id="cdHours" class="text-xl sm:text-3xl font-black hdr-glow-orange leading-tight">00</span>
+          <span class="text-[9px] text-gray-400 uppercase tracking-wider mt-1">Horas</span>
         </div>
-        <div class="bg-black/60 rounded-xl p-2 border border-orange-500/20">
-          <span id="minutes" class="font-orbitron text-2xl sm:text-3xl font-black text-orange-400 block">00</span>
-          <span class="text-[10px] uppercase tracking-wider text-gray-400 whitespace-nowrap">Mins</span>
+        <div class="bg-black/70 p-2.5 rounded-xl border border-white/10 text-center flex flex-col justify-center">
+          <span id="cdMinutes" class="text-xl sm:text-3xl font-black hdr-glow-orange leading-tight">00</span>
+          <span class="text-[9px] text-gray-400 uppercase tracking-wider mt-1">Mins</span>
         </div>
-        <div class="bg-black/60 rounded-xl p-2 border border-green-500/30">
-          <span id="seconds" class="font-orbitron text-2xl sm:text-3xl font-black neon-green-text block">00</span>
-          <span class="text-[10px] uppercase tracking-wider text-gray-400 whitespace-nowrap">Segs</span>
+        <div class="bg-black/70 p-2.5 rounded-xl border border-white/10 text-center flex flex-col justify-center">
+          <span id="cdSeconds" class="text-xl sm:text-3xl font-black hdr-glow-green leading-tight">00</span>
+          <span class="text-[9px] text-gray-400 uppercase tracking-wider mt-1">Segs</span>
         </div>
       </div>
     </section>
 
-    <!-- Dress Code -->
-    <section class="glass-card rounded-2xl p-5 relative overflow-hidden">
-      <div class="flex items-center justify-between mb-2">
-        <div class="w-10 h-10 rounded-xl bg-purple-950/60 border border-purple-500/40 flex items-center justify-center text-purple-400">
+    <!-- ==========================================================================
+       5. DRESS CODE (Código 1 - Putidisfraz + Concurso)
+       ========================================================================== -->
+    <section class="glass-card hdr-box-orange p-5 space-y-3 relative overflow-hidden">
+      <div class="flex items-center justify-between">
+        <div class="w-10 h-10 rounded-xl bg-orange-950/60 border border-orange-500/40 flex items-center justify-center text-orange-400">
           <i class="fa-solid fa-masks-theater text-lg"></i>
         </div>
-        <span class="text-[10px] font-orbitron px-2.5 py-1 rounded-full bg-purple-900/50 text-purple-300 border border-purple-500/30 font-semibold tracking-wider">
-          MANDATORIO 🎭
+        <span class="text-[10px] font-tech px-2.5 py-1 rounded-full bg-orange-950/80 text-orange-300 border border-orange-500/40 font-bold uppercase tracking-wider">
+          Mandatorio 🎭
         </span>
       </div>
-      <h3 class="font-orbitron text-lg font-bold text-white mb-1">Dress Code: Putidisfraz</h3>
-      <p class="text-sm text-gray-300 leading-relaxed mb-3">
-        Ponte creativo/a, sensual o terrorífico/a. <strong class="text-orange-400">Obligatorio venir disfrazado.</strong>
-      </p>
-      <div class="p-3 rounded-xl bg-purple-950/30 border border-purple-500/20 flex items-center gap-3">
-        <i class="fa-solid fa-trophy text-amber-400 text-xl"></i>
-        <p class="text-xs text-purple-200">
+      <div>
+        <h3 class="font-tech text-base sm:text-lg font-bold text-white">Dress Code: Putidisfraz</h3>
+        <p class="text-xs sm:text-sm text-gray-200 leading-relaxed mt-1">
+          Ponte creativo/a, sensual o terrorífico/a. <strong class="text-orange-400">Obligatorio venir disfrazado.</strong>
+        </p>
+      </div>
+      <div class="p-3 bg-black/60 rounded-xl border border-orange-500/30 flex items-center gap-3">
+        <i class="fa-solid fa-trophy text-amber-400 text-lg shrink-0"></i>
+        <p class="text-xs text-slate-200">
           <strong class="text-amber-400">¡Concurso & Premio!</strong> Habrá premio sorpresa al mejor disfraz de la noche.
         </p>
       </div>
     </section>
 
-    <!-- TTP Card -->
-    <section class="glass-card rounded-2xl p-5 border-green-500/30">
-      <div class="flex items-center justify-between mb-2">
+    <!-- ==========================================================================
+       5. TTP (Código 1 - Trae Tu Pomo Directo)
+       ========================================================================== -->
+    <section class="glass-card hdr-box-green p-5 space-y-2">
+      <div class="flex items-center justify-between">
         <div class="w-10 h-10 rounded-xl bg-green-950/60 border border-green-500/40 flex items-center justify-center text-green-400">
           <i class="fa-solid fa-wine-bottle text-lg"></i>
         </div>
-        <span class="text-[10px] font-orbitron px-2.5 py-1 rounded-full bg-green-950/60 text-green-400 border border-green-500/40 font-bold tracking-wider">
+        <span class="text-[10px] font-tech px-2.5 py-1 rounded-full bg-green-950/80 text-green-400 border border-green-500/40 font-bold tracking-wider">
           TTP 🍾
         </span>
       </div>
-      <h3 class="font-orbitron text-lg font-bold text-white mb-1">TTP (Trae Tu Pomo)</h3>
-      <p class="text-sm text-gray-300 leading-relaxed">
+      <h3 class="font-tech text-base sm:text-lg font-bold text-white">TTP (Trae Tu Pomo)</h3>
+      <p class="text-xs sm:text-sm text-gray-100 font-medium leading-relaxed">
         Cada quien trae lo que vaya a tomar. 🥂
       </p>
+      <div class="pt-2 border-t border-white/10 text-[10px] text-green-400 font-tech">
+        #Lokoween2daEdición
+      </div>
     </section>
 
-    <!-- Fecha y Hora -->
-    <section class="glass-card rounded-2xl p-5">
+    <!-- FECHA Y HORA -->
+    <section class="glass-card p-5">
       <div class="flex items-center gap-4">
-        <div class="w-12 h-12 rounded-2xl bg-orange-950/60 border border-orange-500/40 flex items-center justify-center text-orange-400 shrink-0">
+        <div class="w-11 h-11 rounded-2xl bg-purple-950/60 border border-purple-500/40 flex items-center justify-center text-purple-400 shrink-0">
           <i class="fa-regular fa-calendar-check text-xl"></i>
         </div>
         <div>
-          <h3 class="font-orbitron text-base font-bold text-white">Fecha y Hora</h3>
-          <p class="text-sm text-gray-300">Jueves 31 de Octubre, 2026</p>
-          <p class="text-xs text-orange-400 font-semibold mt-0.5">Acceso: 8:00 PM | Cierre: Hasta que el cuerpo aguante</p>
+          <h3 class="font-tech text-sm sm:text-base font-bold text-white">Fecha y Hora</h3>
+          <p class="text-xs sm:text-sm text-gray-300">Jueves 31 de Octubre, 2026</p>
+          <p class="text-[11px] text-orange-400 font-semibold mt-0.5">Acceso: 8:00 PM | Cierre: Hasta que el cuerpo aguante</p>
         </div>
       </div>
     </section>
 
-    <!-- Ubicación & Google Maps -->
-    <section class="glass-card rounded-2xl p-5 flex flex-col gap-4">
+    <!-- ==========================================================================
+       6. UBICACIÓN & GOOGLE MAPS (Código 2)
+       ========================================================================== -->
+    <section class="glass-card p-5 flex flex-col gap-4">
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-xl bg-red-950/60 border border-red-500/40 flex items-center justify-center text-red-400 shrink-0">
           <i class="fa-solid fa-location-dot text-lg"></i>
         </div>
         <div>
-          <h3 class="font-orbitron text-base font-bold text-white">Ubicación del Evento</h3>
-          <p class="text-xs text-gray-400">Abre la ruta directamente en tu app de mapas</p>
+          <h3 class="font-tech text-sm sm:text-base font-bold text-white">Ubicación del Evento</h3>
+          <p class="text-[11px] text-gray-300">Abre la ruta o copia el enlace de mapas</p>
         </div>
       </div>
 
-      <div class="flex flex-col gap-2">
-        <button id="copy-map-btn" class="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-orbitron text-gray-300 flex items-center justify-center gap-2 transition-all active:scale-95">
-          <i class="fa-regular fa-copy"></i> Copiar Enlace Mapa
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <button id="copy-map-btn" class="w-full py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-xs font-tech text-gray-200 flex items-center justify-center gap-2 transition active:scale-95">
+          <i class="fa-regular fa-copy text-orange-400"></i> Copiar Enlace
         </button>
-        <a href="https://maps.app.goo.gl/emMSVnp81T2YVWb28" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-orbitron font-bold flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/50 transition-all active:scale-95">
-          <i class="fa-solid fa-map-location-dot"></i> Abrir en Google Maps
+        <a href="https://maps.app.goo.gl/emMSVnp81T2YVWb28" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600/80 hover:bg-emerald-500 border border-emerald-400/50 text-white text-xs font-tech font-bold flex items-center justify-center gap-2 transition active:scale-95 text-center">
+          <i class="fa-solid fa-map-location-dot"></i> Abrir Google Maps
         </a>
       </div>
 
       <!-- Google Maps Embed -->
-      <div class="w-full h-48 rounded-xl overflow-hidden border border-white/10 mt-1">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m11!1m3!1d633.0317042666064!2d-99.65825499183204!3d19.349213441261625!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e1!3m2!1ses-419!2smx!4v1793036161034!5m2!1ses-419!2smx" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <div class="w-full h-48 rounded-xl overflow-hidden border border-white/15 shadow-xl mt-1">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m16!1m11!1m3!1d633.0317042666064!2d-99.65825499183204!3d19.349213441261625!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e1!3m2!1ses-419!2smx!4v1793036161034!5m2!1ses-419!2smx" 
+          width="100%" 
+          height="100%" 
+          style="border:0; filter: invert(90%) hue-rotate(180deg) contrast(1.2);" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
       </div>
     </section>
 
-    <!-- Spotify Collaborative Playlist Section -->
-    <section class="glass-card rounded-2xl p-5 border-emerald-500/40 relative overflow-hidden">
-      <div class="flex items-center justify-between mb-3">
+    <!-- ==========================================================================
+       6. SPOTIFY COLLABORATIVE PLAYLIST (Código 2)
+       ========================================================================== -->
+    <section class="glass-card p-5 border-emerald-500/40 relative overflow-hidden space-y-3">
+      <div class="flex items-center justify-between">
         <div class="w-10 h-10 rounded-xl bg-emerald-950/60 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
           <i class="fa-brands fa-spotify text-2xl"></i>
         </div>
-        <span class="text-[10px] font-orbitron px-2.5 py-1 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-500/30 font-semibold tracking-wider">
+        <span class="text-[10px] font-tech px-2.5 py-1 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-500/30 font-semibold tracking-wider">
           PLAYLIST COLABORATIVA 🎧
         </span>
       </div>
-      <h3 class="font-orbitron text-lg font-bold text-white mb-1">¿Qué rola no puede faltar?</h3>
-      <p class="text-sm text-gray-300 leading-relaxed mb-4">
-        Agrega tus canciones directamente a la playlist oficial de la fiesta en Spotify.
-      </p>
+      <div>
+        <h3 class="font-tech text-base sm:text-lg font-bold text-white">¿Qué rola no puede faltar?</h3>
+        <p class="text-xs text-gray-300 leading-relaxed mt-1">
+          Agrega tus canciones directamente a la lista oficial de la fiesta en Spotify.
+        </p>
+      </div>
       
-      <!-- SUSTITUYE 'PEGA_AQUI_TU_ENLACE_DE_SPOTIFY' POR EL LINK DE TU PLAYLIST -->
-      <a href="https://open.spotify.com/playlist/6cJMUkuinYNH78A3tGbZ6K?si=c30c7940a37f4410&pt=775373c1c2a2f9efca602d6521d294f0" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 rounded-xl bg-[#1DB954] hover:bg-[#1ed760] text-black font-orbitron font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/60 transition-all active:scale-95">
-        <i class="fa-brands fa-spotify text-lg"></i> Agregar Canciones a Spotify
+      <!-- SUSTITUYE 'PEGA_AQUI_TU_ENLACE_DE_SPOTIFY' POR TU LINK REAL -->
+      <a href="https://open.spotify.com/playlist/6cJMUkuinYNH78A3tGbZ6K?si=e6275999075845de&pt=e92f5e196caeb55db66971f1aedc6cf4" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 rounded-xl bg-[#1DB954] hover:bg-[#1ed760] text-black font-tech font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/60 transition active:scale-95">
+        <i class="fa-brands fa-spotify text-base"></i> Agregar Canciones a Spotify
       </a>
     </section>
 
-    <!-- Agendar Evento -->
-    <section class="glass-card rounded-2xl p-5 text-center">
-      <h3 class="font-orbitron text-base font-bold neon-orange-text mb-2">¡Nos vemos el 31! 🎃</h3>
-      <p class="text-xs text-gray-300 mb-4">Prepara tu disfraz y tu pomo. ¡Lokoween 2da edición se va a poner legendaria!</p>
-      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Lokoween+2da+Edici%C3%B3n+%F0%9F%8E%83&dates=20261031T200000/20261101T060000&details=Peda+de+disfraces+Vol.+II.+TTP.&location=https://maps.app.goo.gl/emMSVnp81T2YVWb28" target="_blank" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-orbitron text-xs font-bold shadow-lg shadow-orange-950/50 transition-all active:scale-95">
-        <i class="fa-regular fa-calendar-plus"></i> Agendar en Google Calendar
-      </a>
+    <!-- ==========================================================================
+       7. SECCIÓN "¡NOS VEMOS EL 31!" (Código 1 - Creepster + Google Calendar)
+       ========================================================================== -->
+    <section class="text-center space-y-4 pt-2">
+      <div class="glass-card hdr-box-orange p-6 sm:p-8 rounded-3xl space-y-4 bg-gradient-to-b from-orange-500/10 via-transparent to-transparent">
+        <h2 class="font-spooky text-4xl sm:text-6xl hdr-glow-orange leading-tight">
+          ¡Nos vemos el 31! 🎃
+        </h2>
+        <p class="text-xs sm:text-sm text-gray-200 max-w-xs mx-auto leading-relaxed">
+          Prepara tu disfraz y tu pomo. ¡La 2da edición de Lokoween se va a poner legendaria!
+        </p>
+
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Lokoween+2da+Edici%C3%B3n+%F0%9F%8E%83&dates=20261031T200000/20261101T060000&details=Peda+de+disfraces+Vol.+II.+TTP.&location=https://maps.app.goo.gl/emMSVnp81T2YVWb28" target="_blank" class="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white font-tech font-bold text-xs uppercase tracking-wider shadow-xl flex items-center justify-center gap-2 transition active:scale-95">
+          <i class="fa-regular fa-calendar-plus text-base"></i> Agendar en Google Calendar
+        </a>
+      </div>
     </section>
 
   </main>
 
-  <!-- Footer -->
-  <footer class="w-full text-center py-4 text-[11px] text-gray-500 z-10 border-t border-white/5">
+  <!-- FOOTER -->
+  <footer class="w-full text-center py-4 text-[10px] sm:text-xs text-gray-400 z-10 border-t border-white/10">
     LOKOWEEN 2026 🎃 • Nos reservamos el derecho de acceso a quien no traiga disfraz.
   </footer>
 
-  <!-- Toast Notification -->
-  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-orange-600 text-white text-xs font-orbitron px-4 py-2.5 rounded-full shadow-2xl opacity-0 transition-opacity pointer-events-none z-[99999]">
-    ¡Enlace copiado al portapapeles!
+  <!-- NOTIFICACIÓN TOAST -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 glass-card border-green-500/50 text-green-400 text-xs font-tech px-4 py-2.5 rounded-full shadow-2xl opacity-0 transition-opacity pointer-events-none z-[99999] flex items-center gap-2">
+    <i class="fa-solid fa-circle-check"></i>
+    <span>¡Enlace copiado al portapapeles!</span>
   </div>
 
+  <!-- JAVASCRIPT -->
   <script>
-    // Contador regresivo
+    // CONTADOR REGRESIVO (OCT 31, 2026 8:00 PM)
     const partyDate = new Date('October 31, 2026 20:00:00').getTime();
 
     function updateCountdown() {
@@ -272,10 +366,10 @@
       const distance = partyDate - now;
 
       if (distance < 0) {
-        document.getElementById('days').innerText = '00';
-        document.getElementById('hours').innerText = '00';
-        document.getElementById('minutes').innerText = '00';
-        document.getElementById('seconds').innerText = '00';
+        document.getElementById('cdDays').innerText = '00';
+        document.getElementById('cdHours').innerText = '00';
+        document.getElementById('cdMinutes').innerText = '00';
+        document.getElementById('cdSeconds').innerText = '00';
         return;
       }
 
@@ -284,39 +378,86 @@
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      document.getElementById('days').innerText = String(days).padStart(2, '0');
-      document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-      document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-      document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+      document.getElementById('cdDays').innerText = String(days).padStart(2, '0');
+      document.getElementById('cdHours').innerText = String(hours).padStart(2, '0');
+      document.getElementById('cdMinutes').innerText = String(minutes).padStart(2, '0');
+      document.getElementById('cdSeconds').innerText = String(seconds).padStart(2, '0');
     }
 
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Copiar link de mapa
+    // COPIAR LINK DE GOOGLE MAPS
+    const MAP_URL = "https://maps.app.goo.gl/6pVmJPG3Ti4GqUyy7";
     document.getElementById('copy-map-btn').addEventListener('click', () => {
-      navigator.clipboard.writeText('https://maps.app.goo.gl/emMSVnp81T2YVWb28');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(MAP_URL);
+      } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = MAP_URL;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
       const toast = document.getElementById('toast');
       toast.classList.remove('opacity-0');
       setTimeout(() => toast.classList.add('opacity-0'), 2500);
     });
 
-    // Control de Audio
-    const audio = document.getElementById('bg-music');
-    const audioBtn = document.getElementById('audio-toggle');
-    const audioIcon = document.getElementById('audio-icon');
-    let isPlaying = false;
+    // SINTETIZADOR / AMBIENTE AUDIO SPOOKY
+    let audioCtx = null;
+    let isPlayingSound = false;
+    let mainGain = null;
+    let synthOsc = null;
 
-    audioBtn.addEventListener('click', () => {
-      if (isPlaying) {
-        audio.pause();
-        audioIcon.className = 'fa-solid fa-volume-xmark text-lg';
+    document.getElementById('audio-toggle').addEventListener('click', () => {
+      const audioIcon = document.getElementById('audio-icon');
+
+      if (!isPlayingSound) {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        
+        synthOsc = audioCtx.createOscillator();
+        const lfo = audioCtx.createOscillator();
+        mainGain = audioCtx.createGain();
+        const filter = audioCtx.createBiquadFilter();
+
+        synthOsc.type = 'sawtooth';
+        synthOsc.frequency.setValueAtTime(55, audioCtx.currentTime);
+
+        lfo.frequency.setValueAtTime(0.2, audioCtx.currentTime);
+        const lfoGain = audioCtx.createGain();
+        lfoGain.gain.setValueAtTime(15, audioCtx.currentTime);
+
+        lfo.connect(lfoGain);
+        lfoGain.connect(synthOsc.frequency);
+
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(180, audioCtx.currentTime);
+
+        mainGain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+
+        synthOsc.connect(filter);
+        filter.connect(mainGain);
+        mainGain.connect(audioCtx.destination);
+
+        synthOsc.start();
+        lfo.start();
+
+        isPlayingSound = true;
+        audioIcon.className = 'fa-solid fa-volume-high text-base';
       } else {
-        audio.play().then(() => {
-          audioIcon.className = 'fa-solid fa-volume-high text-lg';
-        }).catch(err => console.log(err));
+        if (mainGain) {
+          mainGain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.5);
+          setTimeout(() => {
+            if (synthOsc) synthOsc.stop();
+          }, 500);
+        }
+        isPlayingSound = false;
+        audioIcon.className = 'fa-solid fa-volume-xmark text-base';
       }
-      isPlaying = !isPlaying;
     });
   </script>
 </body>
