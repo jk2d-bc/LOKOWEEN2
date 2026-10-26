@@ -2,17 +2,17 @@
 <html lang="es" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>🎃 LOKOWEEN 2da Edición | La Peda de Disfraces</title>
 
-  <!-- Open Graph Meta Tags (Para vista previa en WhatsApp, Messenger, IG) -->
+  <!-- Open Graph Meta Tags (Para vista previa en WhatsApp, Instagram, Messenger) -->
   <meta property="og:title" content="🎃 LOKOWEEN (2da Edición) — ¡La Peda de Disfraces del Año!">
-  <meta property="og:description" content="🗓️ 31 Octubre | ⏰ 8:00 PM | 🎭 Putidisfraz Obligatorio | 🍾 TTP (Trae Tu Pomo). ¡Haz clic para ver detalles!">
+  <meta property="og:description" content="🗓️ 31 Octubre | ⏰ 8:00 PM | 🎭 Putidisfraz Obligatorio | 🍾 TTP (Trae Tu Pomo). ¡Haz clic para ver la ubicación y detalles!">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://images.unsplash.com/photo-1508361001413-7a9dca21d08a?auto=format&fit=crop&w=1200&q=80">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta name="theme-color" content="#0d0514">
+  <meta name="theme-color" content="#09040e">
 
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,12 +31,12 @@
         extend: {
           colors: {
             brand: {
-              orange: '#ff6600',
-              orangeGlow: '#ff4500',
-              green: '#00ff66',
-              purple: '#8b5cf6',
+              orange: 'var(--neon-orange)',
+              orangeGlow: 'var(--neon-orange-glow)',
+              green: 'var(--neon-green)',
+              greenGlow: 'var(--neon-green-glow)',
+              purple: 'var(--neon-purple)',
               darkBg: '#09040e',
-              cardBg: 'rgba(18, 9, 28, 0.75)',
             }
           },
           fontFamily: {
@@ -45,17 +45,17 @@
             sans: ['Plus Jakarta Sans', 'sans-serif']
           },
           animation: {
-            'pulse-glow': 'pulseGlow 2s infinite alternate',
             'float': 'float 4s ease-in-out infinite',
+            'pulse-hdr': 'pulseHdr 2.5s ease-in-out infinite alternate'
           },
           keyframes: {
-            pulseGlow: {
-              '0%': { boxShadow: '0 0 15px rgba(255,102,0,0.4), 0 0 30px rgba(255,102,0,0.2)' },
-              '100%': { boxShadow: '0 0 25px rgba(0,255,102,0.6), 0 0 50px rgba(0,255,102,0.3)' }
-            },
             float: {
               '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-10px)' }
+              '50%': { transform: 'translateY(-8px)' }
+            },
+            pulseHdr: {
+              '0%': { opacity: '0.85', transform: 'scale(1)' },
+              '100%': { opacity: '1', transform: 'scale(1.02)' }
             }
           }
         }
@@ -64,23 +64,100 @@
   </script>
 
   <style>
-    /* Estilos Neón y Vidrio Oscuro */
-    .text-glow-orange {
-      text-shadow: 0 0 14px rgba(255, 102, 0, 0.9), 0 0 30px rgba(255, 102, 0, 0.6);
+    /* ==========================================================================
+       VARIABLES DE COLOR BASE (Fallback SDR / sRGB)
+       ========================================================================== */
+    :root {
+      --neon-orange: #ff6600;
+      --neon-orange-glow: #ff4500;
+      --neon-green: #00ff66;
+      --neon-green-glow: #00cc55;
+      --neon-purple: #b042ff;
     }
-    .text-glow-green {
-      text-shadow: 0 0 14px rgba(0, 255, 102, 0.9), 0 0 30px rgba(0, 255, 102, 0.6);
+
+    /* Estilos sRGB Estándar */
+    .hdr-glow-orange {
+      text-shadow: 
+        0 0 10px rgba(255, 102, 0, 0.8),
+        0 0 25px rgba(255, 102, 0, 0.5),
+        0 0 50px rgba(255, 69, 0, 0.3);
     }
+
+    .hdr-glow-green {
+      text-shadow: 
+        0 0 10px rgba(0, 255, 102, 0.9),
+        0 0 25px rgba(0, 255, 102, 0.6),
+        0 0 50px rgba(0, 204, 85, 0.3);
+    }
+
+    .hdr-box-orange {
+      border-color: rgba(255, 102, 0, 0.4);
+      box-shadow: 0 0 20px rgba(255, 102, 0, 0.25), inset 0 0 15px rgba(255, 102, 0, 0.1);
+    }
+
+    .hdr-box-green {
+      border-color: rgba(0, 255, 102, 0.4);
+      box-shadow: 0 0 20px rgba(0, 255, 102, 0.25), inset 0 0 15px rgba(0, 255, 102, 0.1);
+    }
+
+    /* ==========================================================================
+       REGLAS MODERNAS HDR & WIDE COLOR GAMUT (Display P3 y Dynamic Range High)
+       Activa la emisión ultraluminosa en pantallas OLED / AMOLED de gama alta.
+       ========================================================================== */
+    @media (color-gamut: p3) {
+      :root {
+        --neon-orange: color(display-p3 1 0.35 0);
+        --neon-orange-glow: color(display-p3 1 0.15 0);
+        --neon-green: color(display-p3 0 1 0.25);
+        --neon-green-glow: color(display-p3 0 0.85 0.2);
+        --neon-purple: color(display-p3 0.75 0.1 1);
+      }
+    }
+
+    @media (dynamic-range: high) and (color-gamut: p3) {
+      .hdr-glow-orange {
+        text-shadow: 
+          0 0 4px color(display-p3 1 0.6 0.2),
+          0 0 15px color(display-p3 1 0.35 0),
+          0 0 35px color(display-p3 1 0.2 0),
+          0 0 70px color(display-p3 1 0.05 0);
+      }
+
+      .hdr-glow-green {
+        text-shadow: 
+          0 0 4px color(display-p3 0.5 1 0.6),
+          0 0 15px color(display-p3 0 1 0.3),
+          0 0 35px color(display-p3 0 0.9 0.2),
+          0 0 70px color(display-p3 0 0.7 0.1);
+      }
+
+      .hdr-box-orange {
+        border-color: color(display-p3 1 0.35 0 / 0.6);
+        box-shadow: 
+          0 0 25px color(display-p3 1 0.35 0 / 0.4),
+          0 0 50px color(display-p3 1 0.2 0 / 0.2),
+          inset 0 0 20px color(display-p3 1 0.35 0 / 0.2);
+      }
+
+      .hdr-box-green {
+        border-color: color(display-p3 0 1 0.3 / 0.6);
+        box-shadow: 
+          0 0 25px color(display-p3 0 1 0.3 / 0.4),
+          0 0 50px color(display-p3 0 0.8 0.2 / 0.2),
+          inset 0 0 20px color(display-p3 0 1 0.3 / 0.2);
+      }
+    }
+
+    /* Componentes de Vidrio Esmerilado (Glassmorphism) */
     .glass-card {
-      background: rgba(14, 7, 24, 0.78);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 102, 0, 0.3);
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+      background: rgba(13, 6, 22, 0.78);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 102, 0, 0.25);
+      border-radius: 1.5rem;
     }
-    .glass-card:hover {
-      border-color: rgba(0, 255, 102, 0.6);
-    }
+
+    /* Fondo Canvas de Partículas */
     canvas#spookyCanvas {
       position: fixed;
       top: 0;
@@ -90,211 +167,213 @@
       pointer-events: none;
       z-index: 2;
     }
+
+    /* Scrollbar */
     ::-webkit-scrollbar {
-      width: 8px;
+      width: 6px;
     }
     ::-webkit-scrollbar-track {
       background: #09040e;
     }
     ::-webkit-scrollbar-thumb {
-      background: #ff6600;
-      border-radius: 4px;
+      background: var(--neon-orange);
+      border-radius: 3px;
     }
   </style>
 </head>
-<body class="bg-brand-darkBg text-slate-100 font-sans selection:bg-brand-orange selection:text-black min-h-screen relative overflow-x-hidden">
+<body class="bg-brand-darkBg text-slate-100 font-sans selection:bg-brand-orange selection:text-black min-h-[100dvh] relative overflow-x-hidden">
 
-  <!-- VIDEO DE FONDO ESTILO ANTRO / DISCO BALLS -->
+  <!-- VIDEO DE FONDO HDR / DISCO BALLS -->
   <video autoplay loop muted playsinline id="bgVideo" class="fixed top-0 left-0 w-full h-full object-cover z-0 opacity-45 pointer-events-none scale-105">
-    <!-- REEMPLAZA "video.mp4" CON EL NOMBRE DE TU VIDEO EN GITHUB -->
+    <!-- Carga tu video local si se llama video.mp4 -->
     <source src="video.mp4" type="video/mp4">
-    <!-- Video de respaldo mientras subes tu propio archivo -->
+    <!-- Video de respaldo en alta resolución -->
     <source src="https://assets.mixkit.co/videos/preview/mixkit-party-lights-and-people-dancing-40348-large.mp4" type="video/mp4">
   </video>
 
-  <!-- OVERLAY OSCURO CON DEGRADADO PARA ASEGURAR LECTURA DE TEXTO -->
-  <div class="fixed inset-0 bg-gradient-to-b from-brand-darkBg/80 via-brand-darkBg/65 to-brand-darkBg/90 z-[1] pointer-events-none backdrop-blur-[1px]"></div>
+  <!-- CAPA DE CONTROL DE CONTRASTE Y GRADIENTE -->
+  <div class="fixed inset-0 bg-gradient-to-b from-brand-darkBg/85 via-brand-darkBg/70 to-brand-darkBg/95 z-[1] pointer-events-none"></div>
 
-  <!-- PARTICULAS CHISPAS Y NEBLINA CREADAS EN CANVAS -->
+  <!-- CANVAS DE PARTICULAS Y NEBLINA -->
   <canvas id="spookyCanvas"></canvas>
 
-  <!-- CONTROLES DE AUDIO SINTETIZADO -->
-  <div class="fixed top-4 right-4 z-50">
-    <button id="soundToggle" onclick="toggleSpookySound()" class="glass-card text-brand-orange hover:text-brand-green p-3 rounded-full shadow-2xl transition duration-300 flex items-center justify-center space-x-2">
+  <!-- BOTÓN FLOTANTE DE AUDIO EN ESQUINA SUPERIOR DERECHA -->
+  <div class="fixed top-4 right-4 z-[9999]">
+    <button id="soundToggle" onclick="toggleSpookySound()" class="glass-card hdr-box-orange text-brand-orange hover:text-brand-green p-3 rounded-full shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2 active:scale-95">
       <i data-lucide="volume-x" id="soundIcon" class="w-5 h-5"></i>
-      <span class="text-xs font-bold tracking-wider hidden sm:inline" id="soundText">AUDIO OFF</span>
+      <span class="text-[11px] font-bold font-tech tracking-wider hidden sm:inline" id="soundText">AUDIO OFF</span>
     </button>
   </div>
 
-  <!-- SISTEMA DE NOTIFICACIONES TOAST -->
-  <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col space-y-3 pointer-events-none"></div>
+  <!-- CONTENEDOR DE NOTIFICACIONES TOAST -->
+  <div id="toastContainer" class="fixed bottom-6 right-6 z-[9999] flex flex-col space-y-3 pointer-events-none"></div>
 
   <!-- CONTENEDOR PRINCIPAL -->
-  <div class="relative z-10 max-w-4xl mx-auto px-4 py-8 sm:py-12 space-y-12">
+  <main class="relative z-10 max-w-4xl mx-auto px-4 py-8 sm:py-12 space-y-8 sm:space-y-12">
 
-    <!-- HERO SECTION -->
-    <header class="text-center space-y-6 pt-4">
+    <!-- ENCABEZADO Y HERO -->
+    <header class="text-center space-y-5 pt-2">
       
-      <!-- Insignia de Edición -->
-      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-brand-orange/15 border border-brand-orange/50 text-brand-orange font-tech text-xs sm:text-sm tracking-widest uppercase animate-pulse">
+      <!-- Insignia Neón HDR -->
+      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-black/60 border border-brand-orange/60 text-brand-orange font-tech text-xs tracking-widest uppercase animate-pulse-hdr hdr-box-orange">
         <span>🔥 2DA EDICIÓN RECARGADA 🔥</span>
       </div>
 
-      <!-- Título Principal -->
-      <div class="space-y-2">
-        <h1 class="font-spooky text-6xl sm:text-8xl md:text-9xl text-brand-orange text-glow-orange tracking-wider leading-none select-none animate-float">
+      <!-- Título Lokoween -->
+      <div class="space-y-1">
+        <h1 class="font-spooky text-6xl sm:text-8xl md:text-9xl text-brand-orange hdr-glow-orange tracking-wider leading-none select-none animate-float">
           LOKOWEEN
         </h1>
-        <p class="font-tech text-lg sm:text-2xl text-brand-green text-glow-green tracking-widest uppercase font-extrabold">
+        <p class="font-tech text-base sm:text-2xl text-brand-green hdr-glow-green tracking-widest uppercase font-black pt-2">
           Peda de Disfraces Vol. II
         </p>
       </div>
 
-      <p class="text-slate-200 max-w-lg mx-auto text-sm sm:text-base leading-relaxed font-medium drop-shadow-md">
-        Hace un año sobrevivimos al primer Lokoween... ¡Este 31 de octubre subimos el nivel! Prepárate para la mejor noche del año. 🎃💀✨
+      <p class="text-slate-200 max-w-md mx-auto text-xs sm:text-base leading-relaxed font-medium drop-shadow-md px-2">
+        Hace un año sobrevivimos al primer Lokoween... ¡Este 31 de octubre subimos el nivel! Prepárate para la noche del año. 🎃💀✨
       </p>
 
-      <!-- CONTADOR REGRESIVO -->
-      <div class="pt-4">
-        <div class="glass-card p-6 sm:p-8 rounded-3xl max-w-2xl mx-auto shadow-2xl relative overflow-hidden group">
-          <div class="absolute -top-12 -left-12 w-24 h-24 bg-brand-orange/30 rounded-full blur-2xl group-hover:bg-brand-green/30 transition duration-700"></div>
+      <!-- SECCIÓN DEL CONTADOR REGRESIVO (RESPONSIVE CELULAR) -->
+      <div class="pt-2">
+        <div class="glass-card hdr-box-orange p-5 sm:p-8 rounded-3xl max-w-2xl mx-auto shadow-2xl">
           
-          <h2 class="text-xs font-tech text-slate-300 uppercase tracking-widest mb-4 flex items-center justify-center space-x-2">
+          <h2 class="text-[11px] sm:text-xs font-tech text-slate-300 uppercase tracking-widest mb-4 flex items-center justify-center space-x-2">
             <i data-lucide="clock" class="w-4 h-4 text-brand-orange"></i>
-            <span>Tiempo Restante para el Desmadre</span>
+            <span class="whitespace-nowrap">Tiempo Restante Para El Desmadre</span>
           </h2>
 
           <div class="grid grid-cols-4 gap-2 sm:gap-4 font-tech">
-            <div class="bg-black/70 p-3 sm:p-4 rounded-2xl border border-white/10 text-center shadow-inner">
-              <span id="cdDays" class="block text-2xl sm:text-4xl font-black text-brand-orange">00</span>
-              <span class="text-[10px] sm:text-xs text-slate-400 uppercase">Días</span>
+            <div class="bg-black/80 p-2.5 sm:p-4 rounded-2xl border border-white/10 text-center flex flex-col justify-center">
+              <span id="cdDays" class="text-xl sm:text-4xl font-black text-brand-orange hdr-glow-orange leading-tight">00</span>
+              <span class="text-[9px] sm:text-xs text-slate-400 uppercase tracking-tighter sm:tracking-normal mt-1 whitespace-nowrap">Días</span>
             </div>
-            <div class="bg-black/70 p-3 sm:p-4 rounded-2xl border border-white/10 text-center shadow-inner">
-              <span id="cdHours" class="block text-2xl sm:text-4xl font-black text-brand-orange">00</span>
-              <span class="text-[10px] sm:text-xs text-slate-400 uppercase">Horas</span>
+            <div class="bg-black/80 p-2.5 sm:p-4 rounded-2xl border border-white/10 text-center flex flex-col justify-center">
+              <span id="cdHours" class="text-xl sm:text-4xl font-black text-brand-orange hdr-glow-orange leading-tight">00</span>
+              <span class="text-[9px] sm:text-xs text-slate-400 uppercase tracking-tighter sm:tracking-normal mt-1 whitespace-nowrap">Horas</span>
             </div>
-            <div class="bg-black/70 p-3 sm:p-4 rounded-2xl border border-white/10 text-center shadow-inner">
-              <span id="cdMinutes" class="block text-2xl sm:text-4xl font-black text-brand-orange">00</span>
-              <span class="text-[10px] sm:text-xs text-slate-400 uppercase">Mins</span>
+            <div class="bg-black/80 p-2.5 sm:p-4 rounded-2xl border border-white/10 text-center flex flex-col justify-center">
+              <span id="cdMinutes" class="text-xl sm:text-4xl font-black text-brand-orange hdr-glow-orange leading-tight">00</span>
+              <span class="text-[9px] sm:text-xs text-slate-400 uppercase tracking-tighter sm:tracking-normal mt-1 whitespace-nowrap">Mins</span>
             </div>
-            <div class="bg-black/70 p-3 sm:p-4 rounded-2xl border border-white/10 text-center shadow-inner">
-              <span id="cdSeconds" class="block text-2xl sm:text-4xl font-black text-brand-green text-glow-green">00</span>
-              <span class="text-[10px] sm:text-xs text-slate-400 uppercase">Segs</span>
+            <div class="bg-black/80 p-2.5 sm:p-4 rounded-2xl border border-white/10 text-center flex flex-col justify-center">
+              <span id="cdSeconds" class="text-xl sm:text-4xl font-black text-brand-green hdr-glow-green leading-tight">00</span>
+              <span class="text-[9px] sm:text-xs text-slate-400 uppercase tracking-tighter sm:tracking-normal mt-1 whitespace-nowrap">Segs</span>
             </div>
           </div>
+
         </div>
       </div>
     </header>
 
-    <!-- DETALLES DEL EVENTO -->
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- DETALLES DE LA FIESTA EN TARJETAS -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
 
       <!-- TARJETA 1: DRESS CODE -->
-      <div class="glass-card p-6 sm:p-8 rounded-3xl transition duration-300 hover:-translate-y-1 relative overflow-hidden">
-        <div class="flex items-start justify-between">
+      <div class="glass-card hdr-box-orange p-6 rounded-3xl space-y-4 relative overflow-hidden">
+        <div class="flex items-center justify-between">
           <div class="p-3 bg-brand-orange/20 rounded-2xl border border-brand-orange/40 text-brand-orange">
-            <i data-lucide="sparkles" class="w-7 h-7"></i>
+            <i data-lucide="sparkles" class="w-6 h-6"></i>
           </div>
-          <span class="px-3 py-1 bg-brand-orange/20 text-brand-orange text-xs font-bold rounded-full uppercase tracking-wider">
+          <span class="px-3 py-1 bg-brand-orange/20 text-brand-orange text-[10px] sm:text-xs font-tech font-bold rounded-full uppercase tracking-wider">
             Mandatorio 🎭
           </span>
         </div>
-        <div class="mt-6 space-y-2">
-          <h3 class="text-xl font-bold font-tech text-white">Dress Code: Putidisfraz</h3>
-          <p class="text-sm text-slate-300 leading-relaxed">
+        <div class="space-y-1.5">
+          <h3 class="text-lg sm:text-xl font-bold font-tech text-white">Dress Code: Putidisfraz</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
             Ponte creativo/a, sensual o terrorífico/a. Obligatorio venir disfrazado.
           </p>
-          <div class="mt-4 p-3 bg-black/50 rounded-xl border border-brand-orange/30 flex items-center space-x-3">
-            <i data-lucide="trophy" class="w-6 h-6 text-yellow-400 shrink-0"></i>
-            <p class="text-xs text-slate-200">
-              <strong class="text-yellow-400 font-semibold">¡Concurso & Premio!</strong> Habrá premio sorpresa al mejor disfraz de la noche.
-            </p>
-          </div>
+        </div>
+        <div class="p-3 bg-black/60 rounded-xl border border-brand-orange/30 flex items-center space-x-3">
+          <i data-lucide="trophy" class="w-5 h-5 text-yellow-400 shrink-0"></i>
+          <p class="text-xs text-slate-200">
+            <strong class="text-yellow-400 font-semibold">¡Concurso & Premio!</strong> Habrá premio sorpresa al mejor disfraz.
+          </p>
         </div>
       </div>
 
-      <!-- TARJETA 2: TTP (SIMPLIFICADO AL MÁXIMO) -->
-      <div class="glass-card p-6 sm:p-8 rounded-3xl transition duration-300 hover:-translate-y-1 relative overflow-hidden flex flex-col justify-between">
-        <div class="flex items-start justify-between">
+      <!-- TARJETA 2: TTP (TRAE TU POMO - DIRECTO) -->
+      <div class="glass-card hdr-box-green p-6 rounded-3xl flex flex-col justify-between space-y-4">
+        <div class="flex items-center justify-between">
           <div class="p-3 bg-brand-green/20 rounded-2xl border border-brand-green/40 text-brand-green">
-            <i data-lucide="wine" class="w-7 h-7"></i>
+            <i data-lucide="wine" class="w-6 h-6"></i>
           </div>
-          <span class="px-3 py-1 bg-brand-green/20 text-brand-green text-xs font-bold rounded-full uppercase tracking-wider">
+          <span class="px-3 py-1 bg-brand-green/20 text-brand-green text-[10px] sm:text-xs font-tech font-bold rounded-full uppercase tracking-wider">
             TTP 🍾
           </span>
         </div>
-        <div class="mt-6 space-y-2">
-          <h3 class="text-xl font-bold font-tech text-white">TTP (Trae Tu Pomo)</h3>
-          <p class="text-sm sm:text-base text-slate-200 font-medium leading-relaxed">
+        <div class="space-y-2">
+          <h3 class="text-lg sm:text-xl font-bold font-tech text-white">TTP (Trae Tu Pomo)</h3>
+          <p class="text-sm sm:text-base text-slate-100 font-medium leading-relaxed">
             Cada quien trae lo que vaya a tomar. 🥂
           </p>
         </div>
-        <div class="mt-6 pt-3 border-t border-white/10 text-xs text-brand-green font-tech">
+        <div class="pt-3 border-t border-white/10 text-xs text-brand-green font-tech">
           <span>#Lokoween2daEdición</span>
         </div>
       </div>
 
-      <!-- TARJETA 3: FECHA Y HORARIO -->
-      <div class="glass-card p-6 sm:p-8 rounded-3xl transition duration-300 hover:-translate-y-1">
+      <!-- TARJETA 3: FECHA Y HORA -->
+      <div class="glass-card p-6 rounded-3xl space-y-4">
         <div class="flex items-center space-x-4">
           <div class="p-3 bg-purple-500/20 rounded-2xl border border-purple-500/40 text-purple-400">
-            <i data-lucide="calendar" class="w-7 h-7"></i>
+            <i data-lucide="calendar" class="w-6 h-6"></i>
           </div>
           <div>
-            <h3 class="text-lg font-bold font-tech text-white">Fecha y Hora</h3>
-            <p class="text-sm text-slate-300">Jueves 31 de Octubre, 2026</p>
+            <h3 class="text-base sm:text-lg font-bold font-tech text-white">Fecha y Hora</h3>
+            <p class="text-xs sm:text-sm text-slate-300">Jueves 31 de Octubre, 2026</p>
           </div>
         </div>
-        <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-sm">
-          <span class="text-slate-300 flex items-center space-x-2">
+        <div class="pt-3 border-t border-white/10 flex items-center justify-between text-xs sm:text-sm">
+          <span class="text-slate-300 flex items-center space-x-1.5">
             <i data-lucide="clock" class="w-4 h-4 text-brand-orange"></i>
             <span>Acceso: <strong>8:00 PM</strong></span>
           </span>
-          <span class="text-slate-300 flex items-center space-x-2">
+          <span class="text-slate-300 flex items-center space-x-1.5">
             <i data-lucide="moon" class="w-4 h-4 text-brand-green"></i>
-            <span>Cierre: <strong>Hasta que el cuerpo aguante</strong></span>
+            <span>Cierre: <strong>Hasta el amanecer</strong></span>
           </span>
         </div>
       </div>
 
-      <!-- TARJETA 4: UBICACIÓN Y BOTONES DE ENLACE -->
-      <div class="glass-card p-6 sm:p-8 rounded-3xl transition duration-300 hover:-translate-y-1 flex flex-col justify-between">
-        <div class="flex items-center space-x-4 mb-4">
+      <!-- TARJETA 4: UBICACIÓN Y ACCIONES -->
+      <div class="glass-card p-6 rounded-3xl space-y-4 flex flex-col justify-between">
+        <div class="flex items-center space-x-4">
           <div class="p-3 bg-red-500/20 rounded-2xl border border-red-500/40 text-red-400">
-            <i data-lucide="map-pin" class="w-7 h-7"></i>
+            <i data-lucide="map-pin" class="w-6 h-6"></i>
           </div>
           <div>
-            <h3 class="text-lg font-bold font-tech text-white">Ubicación del Evento</h3>
-            <p class="text-xs text-slate-300">¡Activa el mapa o abre la ruta en tu app!</p>
+            <h3 class="text-base sm:text-lg font-bold font-tech text-white">Ubicación del Evento</h3>
+            <p class="text-xs text-slate-300">Abre la ruta o copia el enlace de mapas</p>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
-          <button onclick="copyAddress()" class="w-full py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-xs font-semibold text-slate-100 flex items-center justify-center space-x-2 transition">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+          <button onclick="copyAddress()" class="w-full py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-xs font-semibold text-slate-100 flex items-center justify-center space-x-2 transition active:scale-95">
             <i data-lucide="copy" class="w-4 h-4 text-brand-orange"></i>
-            <span>Copiar Enlace Mapa</span>
+            <span>Copiar Enlace</span>
           </button>
           
-          <a href="https://maps.app.goo.gl/emMSVnp81T2YVWb28" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl bg-brand-green/20 hover:bg-brand-green/35 border border-brand-green/50 text-xs font-bold text-brand-green flex items-center justify-center space-x-2 transition text-center">
+          <a href="https://maps.app.goo.gl/emMSVnp81T2YVWb28" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl bg-brand-green/20 hover:bg-brand-green/35 border border-brand-green/50 text-xs font-bold text-brand-green flex items-center justify-center space-x-2 transition text-center active:scale-95">
             <i data-lucide="external-link" class="w-4 h-4 text-brand-green"></i>
-            <span>Abrir en Google Maps</span>
+            <span>Abrir Google Maps</span>
           </a>
         </div>
       </div>
 
     </section>
 
-    <!-- SECCIÓN COMPLETA DE MAPA INTEGRADO -->
-    <section class="glass-card p-4 sm:p-6 rounded-3xl overflow-hidden space-y-4">
-      <div class="flex items-center justify-between px-2">
-        <h3 class="text-sm font-bold font-tech text-white flex items-center space-x-2">
+    <!-- MAPA INTEGRADO -->
+    <section class="glass-card p-4 sm:p-6 rounded-3xl overflow-hidden space-y-3">
+      <div class="flex items-center justify-between px-1">
+        <h3 class="text-xs sm:text-sm font-bold font-tech text-white flex items-center space-x-2">
           <i data-lucide="navigation" class="w-4 h-4 text-brand-orange"></i>
           <span>Mapa Interactivo</span>
         </h3>
         <span class="text-[10px] text-slate-400 font-tech">GOOGLE MAPS</span>
       </div>
       
-      <div class="w-full h-64 sm:h-80 rounded-2xl overflow-hidden border border-white/15 shadow-2xl">
+      <div class="w-full h-60 sm:h-72 rounded-2xl overflow-hidden border border-white/15 shadow-2xl">
         <iframe 
           src="https://www.google.com/maps/embed?pb=!1m16!1m11!1m3!1d633.0317042666064!2d-99.65825499183204!3d19.349213441261625!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e1!3m2!1ses-419!2smx!4v1793036161034!5m2!1ses-419!2smx" 
           width="100%" 
@@ -308,39 +387,39 @@
     </section>
 
     <!-- RECOMENDACIÓN DE MÚSICA -->
-    <section class="glass-card p-6 sm:p-8 rounded-3xl relative overflow-hidden">
+    <section class="glass-card hdr-box-green p-6 sm:p-8 rounded-3xl">
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div class="space-y-1">
-          <h3 class="text-xl font-bold font-tech text-white flex items-center space-x-2">
-            <i data-lucide="disc" class="w-6 h-6 text-brand-green animate-spin" style="animation-duration: 6s;"></i>
+          <h3 class="text-lg sm:text-xl font-bold font-tech text-white flex items-center space-x-2">
+            <i data-lucide="disc" class="w-5 h-5 text-brand-green animate-spin" style="animation-duration: 6s;"></i>
             <span>¿Qué rola no puede faltar? 🎧</span>
           </h3>
           <p class="text-xs sm:text-sm text-slate-300">
-            Recomienda tu canción para la lista de reproducción de la noche.
+            Sugiere tu canción para la lista de reproducción.
           </p>
         </div>
         <div class="flex w-full sm:w-auto items-center space-x-2">
-          <input type="text" id="songInput" placeholder="Ej: Safaera - Bad Bunny" class="w-full sm:w-64 px-4 py-2.5 rounded-xl bg-black/70 border border-white/15 text-xs text-white focus:outline-none focus:border-brand-green transition">
-          <button onclick="submitSong()" class="px-4 py-2.5 bg-brand-green text-black font-bold text-xs rounded-xl hover:bg-emerald-400 transition shrink-0">
+          <input type="text" id="songInput" placeholder="Ej: Safaera - Bad Bunny" class="w-full sm:w-64 px-4 py-2.5 rounded-xl bg-black/80 border border-white/20 text-xs text-white focus:outline-none focus:border-brand-green transition">
+          <button onclick="submitSong()" class="px-4 py-2.5 bg-brand-green text-black font-tech font-bold text-xs rounded-xl hover:bg-emerald-400 transition shrink-0 active:scale-95">
             Enviar
           </button>
         </div>
       </div>
     </section>
 
-    <!-- CALL TO ACTION FINAL -->
-    <section class="text-center space-y-6 pt-4">
-      <div class="glass-card p-8 sm:p-12 rounded-3xl border-2 border-brand-orange/40 shadow-2xl space-y-6 bg-gradient-to-b from-brand-orange/15 via-transparent to-transparent">
+    <!-- CALL TO ACTION Y CALENDARIO -->
+    <section class="text-center space-y-6 pt-2">
+      <div class="glass-card hdr-box-orange p-8 sm:p-12 rounded-3xl border-2 shadow-2xl space-y-5 bg-gradient-to-b from-brand-orange/10 via-transparent to-transparent">
         
-        <h2 class="font-spooky text-5xl sm:text-7xl text-brand-orange text-glow-orange">
+        <h2 class="font-spooky text-5xl sm:text-7xl text-brand-orange hdr-glow-orange">
           ¡Nos vemos el 31! 🎃
         </h2>
-        <p class="text-sm sm:text-base text-slate-200 max-w-md mx-auto">
+        <p class="text-xs sm:text-base text-slate-200 max-w-md mx-auto leading-relaxed">
           Prepara tu disfraz y tu pomo. ¡La 2da edición de Lokoween se va a poner legendaria!
         </p>
 
-        <div class="max-w-md mx-auto flex flex-col sm:flex-row gap-4 pt-2">
-          <button onclick="addToCalendar()" class="flex-1 py-4 px-6 rounded-2xl bg-gradient-to-r from-brand-orange to-red-600 text-white font-tech font-bold text-sm uppercase tracking-wider shadow-xl hover:brightness-110 active:scale-95 transition flex items-center justify-center space-x-2">
+        <div class="max-w-xs sm:max-w-md mx-auto pt-2">
+          <button onclick="addToCalendar()" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-brand-orange to-red-600 text-white font-tech font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xl hover:brightness-110 active:scale-95 transition flex items-center justify-center space-x-2">
             <i data-lucide="calendar-plus" class="w-5 h-5"></i>
             <span>Agendar en Google Calendar</span>
           </button>
@@ -350,19 +429,20 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="text-center text-xs text-slate-400 space-y-2 py-6 border-t border-white/10">
+    <footer class="text-center text-[11px] text-slate-400 space-y-1 py-4 border-t border-white/10">
       <p>LOKOWEEN 2026 🎃 • Nos reservamos el derecho de acceso a quien no traiga disfraz.</p>
     </footer>
 
-  </div>
+  </main>
 
-  <!-- JAVASCRIPT -->
+  <!-- JAVASCRIPT INTEGRADO -->
   <script>
     // Inicializar Iconos Lucide
     lucide.createIcons();
 
     const MAP_URL = "https://maps.app.goo.gl/emMSVnp81T2YVWb28";
 
+    // COPIAR UBICACIÓN AL PORTAPAPELES
     function copyAddress() {
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(MAP_URL);
@@ -378,7 +458,7 @@
       }
     }
 
-    // TOAST NOTIFICATION SYSTEM
+    // SISTEMA DE NOTIFICACIONES TOAST (SIN ALERTS)
     function showToast(message) {
       const container = document.getElementById('toastContainer');
       const toast = document.createElement('div');
@@ -398,7 +478,7 @@
       }, 3500);
     }
 
-    // COUNTDOWN TIMER TO OCT 31 8:00 PM
+    // CONTADOR REGRESIVO AL 31 DE OCTUBRE 8:00 PM
     const targetDate = new Date('October 31, 2026 20:00:00').getTime();
 
     function updateCountdown() {
@@ -427,19 +507,19 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // ENVÍO DE SUGERENCIA DE CANCIÓN
+    // ENVÍO DE CANCIÓN SUGERIDA
     function submitSong() {
       const input = document.getElementById('songInput');
       const song = input.value.trim();
       if (!song) {
-        showToast("⚠️ Escribe el nombre de la canción primero");
+        showToast("⚠️ Escribe la rola primero");
         return;
       }
       showToast(`🎶 ¡"${song}" anotada!`);
       input.value = '';
     }
 
-    // AGENDAR EN GOOGLE CALENDAR
+    // AGENDAR EVENTO EN GOOGLE CALENDAR
     function addToCalendar() {
       const title = encodeURIComponent("🎃 LOKOWEEN (2da Edición) - Peda de Disfraces");
       const details = encodeURIComponent("Peda de disfraces (Putidisfraz), TTP (Trae tu pomo).");
@@ -451,7 +531,7 @@
       window.open(googleCalUrl, '_blank');
     }
 
-    // CANVAS DE CHISPAS Y NEBLINA CREADO A 60FPS
+    // CANVAS DE CHISPAS HDR Y NEBLINA FLOATING
     const canvas = document.getElementById('spookyCanvas');
     const ctx = canvas.getContext('2d');
 
@@ -494,7 +574,7 @@
         ctx.save();
         ctx.globalAlpha = this.opacity;
         ctx.fillStyle = this.color;
-        ctx.shadowBlur = 10;
+        ctx.shadowBlur = 12;
         ctx.shadowColor = this.color;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -525,7 +605,7 @@
     initParticles();
     animateParticles();
 
-    // SINTETIZADOR AUDIO SPOOKY
+    // SINTETIZADOR AUDIO AMBIENTE SPOOKY
     let audioCtx = null;
     let isPlayingSound = false;
     let mainGain = null;
